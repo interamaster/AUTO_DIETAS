@@ -1,22 +1,20 @@
 package com.mio.jrdv.auto_dietas;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends ActionBarActivity
@@ -45,15 +43,82 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+
+
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+//        // update the main content by replacing fragments
+//     FragmentManager fragmentManager = getSupportFragmentManager();
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+//                .commit();
+
+        //por defecto  el primer fragment para probar sera el settings:
+
+//        SettingsFragment fragmentmio=null;
+//
+//        fragmentmio = new SettingsFragment();
+//
+//        if (fragmentmio != null) {
+
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.container,fragmentmio)
+//                    .commit();
+
+
+//
+//            SettingsFragment prefFragment = new SettingsFragment();
+//            FragmentManager fragmentManager = getFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.container, prefFragment);
+//            fragmentTransaction.commit();
+
+        if (position == 0){
+
+        // Display the fragment as the main content.
+        FragmentManager mFragmentManager = getFragmentManager();
+        FragmentTransaction mFragmentTransaction = mFragmentManager
+                .beginTransaction();
+        SettingsFragment mPrefsFragment = new SettingsFragment();
+        mFragmentTransaction.replace(R.id.container, mPrefsFragment);
+        mFragmentTransaction.commit();
+        }
+        else  if (position == 1){
+            // update the main content by replacing fragments
+            FragmentManager mFragmentManager= getFragmentManager();
+
+            //PlaceholderFragment fragmentdefault= new PlaceholderFragment();
+            //el placeholder se crea asi:
+
+            PlaceholderFragment fragmentnew2=PlaceholderFragment.newInstance(position);
+
+
+            mFragmentManager.beginTransaction().replace(R.id.container,fragmentnew2).commit();
+
+
+
+
+        }
+        else if (position == 2) {
+
+            CalendarFragment caldroidFragment = new CalendarFragment();
+            Bundle args = new Bundle();
+            Calendar cal = Calendar.getInstance();
+            args.putInt(CalendarFragment.MONTH, cal.get(Calendar.MONTH) + 1);
+            args.putInt(CalendarFragment.YEAR, cal.get(Calendar.YEAR));
+            caldroidFragment.setArguments(args);
+
+            android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+            t.replace(R.id.container, caldroidFragment);
+            t.commit();
+
+
+        }
+
     }
 
     public void onSectionAttached(int number) {

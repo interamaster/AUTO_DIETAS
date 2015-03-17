@@ -2,12 +2,29 @@
 <resources>
 
     <string name="app_name">AUTO_DIETAS</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
+    <string name="title_section1">Settings</string>
+    <string name="title_section2">Import From Calendar:</string>
     <string name="title_section3">Section 3</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="imgdesc">imgdesc</string>
+    <string name="inline_preferences">Preferencias</string>
+    <string name="title_list_preference">Choose Calendar</string>
+    <string name="summary_list_preference">Elige Calendario para importar datos</string>
+    <string name="dialog_based_preferences">DIALOG BASED PREFS</string>
+
+
+    <string-array name="titles">
+        <item>Facebook</item>
+        <item>Google-Plus</item>
+        <item>TutorialsBuzz</item>
+    </string-array>
+    <array name="icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_drawer</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
 
 </resources>

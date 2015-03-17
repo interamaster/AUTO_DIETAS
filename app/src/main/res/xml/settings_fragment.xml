@@ -1,0 +1,43 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="PreferenceCategory A">
+
+        <CheckBoxPreference
+            android:key="checkbox_preference"
+            android:title="title_checkbox_preference"
+            android:summary="summary_checkbox_preference" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="PreferenceCategory B">
+
+        <EditTextPreference
+            android:key="edittext_preference"
+            android:title="title_edittext_preference"
+            android:summary="summary_edittext_preference"
+            android:dialogTitle="dialog_title_edittext_preference" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/dialog_based_preferences">
+
+        <EditTextPreference
+            android:key="edittext_preference2"
+            android:title="EJEMPLO 1"
+            android:summary="SUMARIO 1"
+            android:dialogTitle="TITULO DEL DIALOGO 1" />
+
+        <ListPreference
+            android:entries="@array/colorNames"
+            android:entryValues="@array/colorValues"
+            android:key="color"
+            android:title="Set The Color" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
