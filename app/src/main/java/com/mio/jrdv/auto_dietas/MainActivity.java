@@ -13,8 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.roomorama.caldroid.CaldroidListener;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends ActionBarActivity
@@ -116,6 +121,41 @@ public class MainActivity extends ActionBarActivity
             t.replace(R.id.container, caldroidFragment);
             t.commit();
 
+
+            final CaldroidListener listener = new CaldroidListener() {
+
+                final SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
+
+                @Override
+                public void onSelectDate(Date date, View view) {
+                    Toast.makeText(getApplicationContext(), formatter.format(date),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onChangeMonth(int month, int year) {
+                    String text = "month: " + month + " year: " + year;
+                    Toast.makeText(getApplicationContext(), text,
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onLongClickDate(Date date, View view) {
+                    Toast.makeText(getApplicationContext(),
+                            "Long click " + formatter.format(date),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCaldroidViewCreated() {
+                    Toast.makeText(getApplicationContext(),
+                            "Caldroid view is created",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            };
+
+            caldroidFragment.setCaldroidListener(listener);
 
         }
 

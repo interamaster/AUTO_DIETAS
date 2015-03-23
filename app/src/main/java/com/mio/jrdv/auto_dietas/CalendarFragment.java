@@ -15,4 +15,45 @@ public class CalendarFragment extends CaldroidFragment {
         return new CaldroidSampleCustomAdapter(getActivity(), month, year,
                 getCaldroidData(), extraData);
     }
+
+//
+//
+//    //para detectar los clicks
+//
+//
+//    final CaldroidListener listener = new CaldroidListener() {
+//
+//        @Override
+//        public void onSelectDate(Date date, View view) {
+//            Toast.makeText(getActivity(), formatter.format(date),
+//                    Toast.LENGTH_SHORT).show();
+//        }
+//
+//        @Override
+//        public void onChangeMonth(int month, int year) {
+//            String text = "month: " + month + " year: " + year;
+//            Toast.makeText(getActivity(), text,
+//                    Toast.LENGTH_SHORT).show();
+//        }
+//
+//        @Override
+//        public void onLongClickDate(Date date, View view) {
+//            Toast.makeText(this
+//                    ,
+//                    "Long click " + formatter.format(date),
+//                    Toast.LENGTH_SHORT).show();
+//        }
+//
+//        @Override
+//        public void onCaldroidViewCreated() {
+//            Toast.makeText(getActivity() ,
+//                    "Caldroid view is created",
+//                    Toast.LENGTH_SHORT).show();
+//        }
+//
+//    };
+//
+//    //caldroidFragment.setCaldroidListener(listener);
+//    CalendarFragment.setCaldroidListener(listener);
+
 }
