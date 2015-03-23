@@ -121,40 +121,5 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
         return cellView;
     }
 
-//
-//    //para detectar click
-//
-//    final CaldroidListener listener = new CaldroidListener() {
-//
-//        @Override
-//        public void onSelectDate(Date date, View view) {
-//            Toast.makeText(context, formatter.format(date),
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//
-//        @Override
-//        public void onChangeMonth(int month, int year) {
-//            String text = "month: " + month + " year: " + year;
-//            Toast.makeText( context, text,
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//
-//        @Override
-//        public void onLongClickDate(Date date, View view) {
-//            Toast.makeText(context
-//                    "Long click " + formatter.format(date),
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//
-//        @Override
-//        public void onCaldroidViewCreated() {
-//            Toast.makeText(getApplicationContext(),
-//                    "Caldroid view is created",
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//
-//    };
-//
-//    caldroidFragment.setCaldroidListener(listener);
 
 }

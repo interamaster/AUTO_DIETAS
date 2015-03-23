@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +35,9 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +100,9 @@ public class MainActivity extends ActionBarActivity
 
 
 
-         mFragmentTransaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+         //mFragmentTransaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
 
+         //  mFragmentTransaction.setCustomAnimations(R.transition.enter_from_left,R.transition.exit_to_right);
 
 
         SettingsFragment mPrefsFragment = new SettingsFragment();
@@ -120,7 +125,9 @@ public class MainActivity extends ActionBarActivity
 
             //para hacerlo animado:
 
-            mFragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+            //mFragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+
+         //   mFragmentManager.beginTransaction().setCustomAnimations(R.transition.enter_from_left,R.transition.exit_to_right);
 
             mFragmentManager.beginTransaction().replace(R.id.container,fragmentnew2).commit();
 
@@ -130,38 +137,46 @@ public class MainActivity extends ActionBarActivity
         }
         else if (position == 2) {
 
+
+
             //es el calendar
 
             mTitle = getString(R.string.title_section3);
 
 
 
+
+
+           // CaldroidFragment caldroidFragment = new CaldroidFragment();
+
             CalendarFragment caldroidFragment = new CalendarFragment();
             Bundle args = new Bundle();
             Calendar cal = Calendar.getInstance();
-            args.putInt(CalendarFragment.MONTH, cal.get(Calendar.MONTH) + 1);
-            args.putInt(CalendarFragment.YEAR, cal.get(Calendar.YEAR));
-            caldroidFragment.setArguments(args);
-//
-//            android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+            args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
+            args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
+            args.putBoolean(CaldroidFragment.ENABLE_SWIPE, true);
+            args.putBoolean(CaldroidFragment.SIX_WEEKS_IN_CALENDAR, true);
 
-            // Display the fragment as the main content.
-            FragmentManager mFragmentManager = getFragmentManager();
-            android.support.v4.app.FragmentTransaction  mFragmentTransaction = getSupportFragmentManager()
-                    .beginTransaction();
+            // Uncomment this to customize startDayOfWeek
+            args.putInt(CaldroidFragment.START_DAY_OF_WEEK,
+            CaldroidFragment.MONDAY); // Tuesday
+
+            // Uncomment this line to use Caldroid in compact mode
+              args.putBoolean(CaldroidFragment.SQUARE_TEXT_VIEW_CELL, false);
+            caldroidFragment.setArguments(args);
+
+            // Attach to the activity
+
+            android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+           // t.replace(R.id.container, caldroidFragment);
+           t.replace(R.id.container, caldroidFragment);
+
 
             //para hacerlo animado:
 
-//            t.commit();t.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
-//
-//
-//            t.replace(R.id.container, caldroidFragment);
-//
+            // t.commit();t.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
 
-            mFragmentTransaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
-
-
-            mFragmentTransaction.replace(R.id.container, caldroidFragment);
+            t.commit();
 
 
 
@@ -203,6 +218,14 @@ public class MainActivity extends ActionBarActivity
         }
 
     }
+
+
+
+
+
+
+
+
 
     public void onSectionAttached(int number) {
 //        switch (number) {
