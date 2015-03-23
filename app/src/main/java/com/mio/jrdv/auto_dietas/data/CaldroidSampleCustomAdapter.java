@@ -122,7 +122,7 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
     }
 
 //
-//    //para detectar clock
+//    //para detectar click
 //
 //    final CaldroidListener listener = new CaldroidListener() {
 //

@@ -84,15 +84,32 @@ public class MainActivity extends ActionBarActivity
 
         if (position == 0){
 
+            //es el settings:
+            mTitle = getString(R.string.title_section1);
+
+
         // Display the fragment as the main content.
         FragmentManager mFragmentManager = getFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager
                 .beginTransaction();
+          //para hacerlo animado:
+
+
+
+         mFragmentTransaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+
+
+
         SettingsFragment mPrefsFragment = new SettingsFragment();
         mFragmentTransaction.replace(R.id.container, mPrefsFragment);
         mFragmentTransaction.commit();
         }
         else  if (position == 1){
+
+            //es el normal
+
+            mTitle = getString(R.string.title_section2);
+
             // update the main content by replacing fragments
             FragmentManager mFragmentManager= getFragmentManager();
 
@@ -101,6 +118,9 @@ public class MainActivity extends ActionBarActivity
 
             PlaceholderFragment fragmentnew2=PlaceholderFragment.newInstance(position);
 
+            //para hacerlo animado:
+
+            mFragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
 
             mFragmentManager.beginTransaction().replace(R.id.container,fragmentnew2).commit();
 
@@ -110,16 +130,39 @@ public class MainActivity extends ActionBarActivity
         }
         else if (position == 2) {
 
+            //es el calendar
+
+            mTitle = getString(R.string.title_section3);
+
+
+
             CalendarFragment caldroidFragment = new CalendarFragment();
             Bundle args = new Bundle();
             Calendar cal = Calendar.getInstance();
             args.putInt(CalendarFragment.MONTH, cal.get(Calendar.MONTH) + 1);
             args.putInt(CalendarFragment.YEAR, cal.get(Calendar.YEAR));
             caldroidFragment.setArguments(args);
+//
+//            android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
 
-            android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-            t.replace(R.id.container, caldroidFragment);
-            t.commit();
+            // Display the fragment as the main content.
+            FragmentManager mFragmentManager = getFragmentManager();
+            android.support.v4.app.FragmentTransaction  mFragmentTransaction = getSupportFragmentManager()
+                    .beginTransaction();
+
+            //para hacerlo animado:
+
+//            t.commit();t.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+//
+//
+//            t.replace(R.id.container, caldroidFragment);
+//
+
+            mFragmentTransaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+
+
+            mFragmentTransaction.replace(R.id.container, caldroidFragment);
+
 
 
             final CaldroidListener listener = new CaldroidListener() {
@@ -162,17 +205,17 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
+//        switch (number) {
+//            case 1:
+//                mTitle = getString(R.string.title_section1);
+//                break;
+//            case 2:
+//                mTitle = getString(R.string.title_section2);
+//                break;
+//            case 3:
+//                mTitle = getString(R.string.title_section3);
+//                break;
+//        }
     }
 
     public void restoreActionBar() {
